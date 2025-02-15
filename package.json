@@ -1,13 +1,19 @@
 {
   "name": "@bobbythecatfish/no-repeat",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Get random preset strings or objects at any time without repetition",
   "main": "dist/no-repeat.js",
   "types": "dist/no-repeat.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": ["array", "random", "repeat", "no repeat", "randomization"],
+  "keywords": [
+    "array",
+    "random",
+    "repeat",
+    "no repeat",
+    "randomization"
+  ],
   "author": "BobbyTheCatfish",
   "repository": {
     "type": "git",
