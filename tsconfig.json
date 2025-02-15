@@ -18,7 +18,7 @@
         "esm": true
     },
     "files": [
-        "norepeat.ts"
+        "no-repeat.ts"
     ],
     "exclude": [
         "dist",

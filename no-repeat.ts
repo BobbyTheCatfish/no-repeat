@@ -56,7 +56,7 @@ class NoRepeat<T> {
                 this.chosen.push(element);
             }
             this.reset();
-        } else if (!(this.items.length === 1 && this.chosen.length === 0)) {
+        } else if (!(this.items.length === 0 && this.chosen.length === 0)) {
             this.chosen.push(element);
         }
         return element;
