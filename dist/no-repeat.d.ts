@@ -41,10 +41,10 @@ declare class NoRepeat<T> {
      * Once the last item is picked, all items are reset, with the exception of the one returned.
      */
     getRandom(): T;
-    private reset;
     /**
      * Puts all items back in the item pool so they can be selected again
      */
+    reset(): void;
     private privReset;
 }
 export = NoRepeat;

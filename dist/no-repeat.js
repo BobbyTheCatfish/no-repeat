@@ -60,12 +60,12 @@ class NoRepeat {
         }
         return element;
     }
-    reset() {
-        this.privReset(false);
-    }
     /**
      * Puts all items back in the item pool so they can be selected again
      */
+    reset() {
+        this.privReset(false);
+    }
     privReset(auto) {
         this.items = this.items.concat(this.chosen);
         this.chosen = [];
