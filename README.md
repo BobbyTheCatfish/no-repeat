@@ -12,7 +12,7 @@ Written in TypeScript with no dependencies.
 
 ## Installation
 ```bash
-npm install --save no-repeat
+npm install --save no-repeat@npm:@bobbythecatfish/no-repeat
 ```
 
 ## Usage

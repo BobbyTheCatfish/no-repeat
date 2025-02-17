@@ -22,6 +22,13 @@ declare class NoRepeat<T> {
     chosen: T[];
     /** Custom number of times `getRandom` can be called until all items are are reset to an unchosen state */
     resetAt?: number;
+    /** How many times the items have been cycled through */
+    resetCount: number;
+    /**
+     * If `reset()` is called, this is set to true. It is set to false when all elements are chosen and the items automatically resets.
+     * Default: `true`
+     */
+    lastResetWasAutomatic: boolean;
     /**
      * @param items An array of items to choose from.
      * @param resetAt If provided, the number of times `getRandom` can be called until the array of available items is reset.
@@ -34,9 +41,10 @@ declare class NoRepeat<T> {
      * Once the last item is picked, all items are reset, with the exception of the one returned.
      */
     getRandom(): T;
+    private reset;
     /**
      * Puts all items back in the item pool so they can be selected again
      */
-    reset(): this;
+    private privReset;
 }
 export = NoRepeat;

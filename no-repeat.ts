@@ -26,6 +26,13 @@ class NoRepeat<T> {
     chosen: T[];
     /** Custom number of times `getRandom` can be called until all items are are reset to an unchosen state */
     resetAt?: number;
+    /** How many times the items have been cycled through */
+    resetCount: number;
+    /**
+     * If `reset()` is called, this is set to true. It is set to false when all elements are chosen and the items automatically resets.
+     * Default: `true`
+     */
+    lastResetWasAutomatic: boolean;
 
     /**
      * @param items An array of items to choose from.
@@ -40,6 +47,8 @@ class NoRepeat<T> {
         this.items = items;
         this.chosen = used ?? [];
         this.resetAt = resetAt;
+        this.resetCount = 0;
+        this.lastResetWasAutomatic = true;
         return this;
     }
 
@@ -55,18 +64,23 @@ class NoRepeat<T> {
             if (this.items.length === 0 && this.chosen.length === 0) {
                 this.chosen.push(element);
             }
-            this.reset();
+            this.privReset(true);
         } else if (!(this.items.length === 0 && this.chosen.length === 0)) {
             this.chosen.push(element);
         }
         return element;
     }
+    private reset () {
+        this.privReset(false);
+    }
     /**
      * Puts all items back in the item pool so they can be selected again
      */
-    reset() {
+    private privReset(auto: boolean) {
         this.items = this.items.concat(this.chosen);
         this.chosen = [];
+        this.lastResetWasAutomatic = auto;
+        this.resetCount++;
         return this;
     }
 }

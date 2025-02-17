@@ -36,6 +36,8 @@ class NoRepeat {
         this.items = items;
         this.chosen = used !== null && used !== void 0 ? used : [];
         this.resetAt = resetAt;
+        this.resetCount = 0;
+        this.lastResetWasAutomatic = true;
         return this;
     }
     /**
@@ -51,19 +53,24 @@ class NoRepeat {
             if (this.items.length === 0 && this.chosen.length === 0) {
                 this.chosen.push(element);
             }
-            this.reset();
+            this.privReset(true);
         }
         else if (!(this.items.length === 0 && this.chosen.length === 0)) {
             this.chosen.push(element);
         }
         return element;
     }
+    reset() {
+        this.privReset(false);
+    }
     /**
      * Puts all items back in the item pool so they can be selected again
      */
-    reset() {
+    privReset(auto) {
         this.items = this.items.concat(this.chosen);
         this.chosen = [];
+        this.lastResetWasAutomatic = auto;
+        this.resetCount++;
         return this;
     }
 }
